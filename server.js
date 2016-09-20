@@ -39,14 +39,14 @@ var articles={
 }
 };
 function createTemplate(data){
-    var title=data.title;
+   // var title=data.title;
     var heading=data.heading;
     var date=data.date;
     var content=data.content;
 var htmlTemplate=`
 <html>
     <head>
-        <title>${title}</title>
+        <title></title>
         <link rel="stylesheet" type="text/css" href="/ui/style.css" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     </head>
