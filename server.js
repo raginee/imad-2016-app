@@ -4,8 +4,9 @@ var path = require('path');
 
 var app = express();
 app.use(morgan('combined'));
+var articles={
 
-var firstarticle={
+ 'first-article': {
 'title':'FirstArticle',
 'heading':'First Article',
 'date':'20 Sep 2016',
@@ -14,6 +15,28 @@ var firstarticle={
                
                Java is a high-level programming language originally developed by Sun Microsystems and released in 1995. Java runs on a variety of platforms, such as Windows, Mac OS, and the various versions of UNIX. This tutorial gives a complete understanding of Java.
            </p>`
+},
+ 'second-article':{
+'title':'SecondtArticle',
+'heading':'Second Article',
+'date':'20 Sep 2016',
+'content':`<p>Java is a high-level programming language originally developed by Sun Microsystems and released in 1995. Java runs on a variety of platforms, such as Windows, Mac OS, and the various versions of UNIX. This tutorial gives a complete understanding of Java. </p>
+           <p>
+               
+               Java is a high-level programming language originally developed by Sun Microsystems and released in 1995. Java runs on a variety of platforms, such as Windows, Mac OS, and the various versions of UNIX. This tutorial gives a complete understanding of Java.
+           </p>`
+},
+
+'third-article':{
+'title':'ThirdArticle',
+'heading':'Third Article',
+'date':'20 Sep 2016',
+'content':`<p>Java is a high-level programming language originally developed by Sun Microsystems and released in 1995. Java runs on a variety of platforms, such as Windows, Mac OS, and the various versions of UNIX. This tutorial gives a complete understanding of Java. </p>
+           <p>
+               
+               Java is a high-level programming language originally developed by Sun Microsystems and released in 1995. Java runs on a variety of platforms, such as Windows, Mac OS, and the various versions of UNIX. This tutorial gives a complete understanding of Java.
+           </p>`
+}
 };
 function createTemplate(data){
     var title=data.title;
@@ -52,9 +75,9 @@ return htmlTemplate;
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
-app.get('/firstarticle',function(req,res)
+app.get('/:articleName',function(req,res)
 {
-     res.send(createTemplate(firstarticle));
+     res.send(createTemplate(articles[articleName]));
 });
 app.get('/secondarticle',function(req,res){
     res.sendFile(path.join(__dirname,'ui','secondarticle.html'));
